@@ -3,6 +3,8 @@
 from __future__ import annotations
 import json
 import sys
+import time
+from deadline import operation_deadline
 from flowsteward_extension_sdk import runtime_context_from_payload
 from pinecone import Client, WRITES
 from validation import Failure, bounded_json, require
@@ -52,7 +54,8 @@ def handle(payload):
                 "A durable external-effect claim is required.",
                 code="effect_claim_required",
             )
-        result = client.execute(name, args)
+        with operation_deadline(client.transport.deadline - time.monotonic()):
+            result = client.execute(name, args)
         require(
             len(json.dumps(result, allow_nan=False).encode()) <= 480 * 1024,
             "Provider result exceeds host inline budget.",

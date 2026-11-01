@@ -6,7 +6,7 @@ Standalone host-v2 extension `flowsteward.pinecone` v1.0.0. Pure Python on Linux
 
 Select a project connection of type `pinecone`; config requires `index` (lowercase name, max 45 characters), `dimension` (1–20000), optionally `metric` (`cosine`, `euclidean`, `dotproduct`), `index_host` (hostname only), and `request_timeout_seconds` (1–30, default 15). Secret: `api_key`. The action's `connection_ref` must match the selected connection ID. Both account and project context are required.
 
-Control plane is fixed to `https://api.pinecone.io`. Data hosts come from the configured index's describe response, must be lowercase subdomains of `.pinecone.io`, and must match `index_host` when set. DNS resolves through the SDK and only public IPs are accepted; pinned HTTPS verifies TLS hostname/certificate, disallows redirects and does not retry. Keys and provider error bodies are never returned. One deadline covers the entire operation.
+Control plane is fixed to `https://api.pinecone.io`. Data hosts come from the configured index's describe response, must be lowercase subdomains of `.pinecone.io`, and must match `index_host` when set. DNS resolves through the SDK and only public IPs are accepted; pinned HTTPS verifies TLS hostname/certificate, disallows redirects and does not retry. Keys and provider error bodies are never returned. A process-level wall-clock alarm covers the entire operation, including DNS and response reads; per-request socket timeouts also use the remaining budget. The supported Linux host-v2 entrypoint is a single-threaded subprocess.
 
 ## Operations
 

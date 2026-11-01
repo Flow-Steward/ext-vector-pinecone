@@ -31,6 +31,7 @@ PAYLOAD_FILES = frozenset(
         "icon.png",
         "health.py",
         "main.py",
+        "deadline.py",
         "pinecone.py",
         "transport.py",
         "validation.py",

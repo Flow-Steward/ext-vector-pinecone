@@ -295,3 +295,100 @@ def test_configure_protection_is_explicit_confirmed_write(wire):
         envelope("configure_index_protection", enabled=False, confirm_index="other")
     )["ok"]
     assert not wire
+
+
+@pytest.mark.parametrize("test_mode", [False, True])
+def test_combined_chunk_metadata_validated_before_io(wire, test_mode):
+    p = envelope(
+        "replace_document",
+        document_id="d",
+        chunks=[{"text": "t" * 32000, "values": [1, 0], "metadata": {"tag": "m" * 32000}}],
+    )
+    p["runtime_context"]["test_mode"] = test_mode
+    result = main.handle(p)
+    assert result["error_code"] == "invalid_payload"
+    assert wire == []
+
+
+@pytest.mark.parametrize("phase", ["dns", "read"])
+def test_whole_operation_deadline_interrupts_blocking_io(monkeypatch, phase):
+    import io
+    import time
+    import transport
+
+    def dns(*args, **kwargs):
+        if phase == "dns":
+            time.sleep(2)
+        return ["8.8.8.8"]
+
+    class Response(io.BytesIO):
+        status = 200
+
+        def read(self, amount=-1):
+            time.sleep(2)
+            return super().read(amount)
+
+    original_init = transport.Transport.__init__
+
+    def short_deadline(self, key, timeout):
+        original_init(self, key, timeout)
+        self.deadline = time.monotonic() + 0.05
+
+    monkeypatch.setattr(transport.Transport, "__init__", short_deadline)
+    monkeypatch.setattr(transport, "resolve_pinned_ips", dns)
+    monkeypatch.setattr(transport, "open_pinned_url", lambda *a, **k: Response(b"{}"))
+    start = time.monotonic()
+    result = main.handle(envelope("describe_index"))
+    elapsed = time.monotonic() - start
+    assert elapsed < 0.5
+    assert result["error_code"] == "timeout"
+    assert result["definitely_no_external_effect"]
+
+
+def test_wallclock_timeout_after_write_dispatch_is_unknown(monkeypatch):
+    import io
+    import time
+    import transport
+
+    class Response(io.BytesIO):
+        status = 200
+
+        def __init__(self, body, slow=False):
+            super().__init__(body)
+            self.slow = slow
+
+        def read(self, amount=-1):
+            if self.slow:
+                time.sleep(2)
+            return super().read(amount)
+
+    original_init = transport.Transport.__init__
+
+    def short_deadline(self, key, timeout):
+        original_init(self, key, timeout)
+        self.deadline = time.monotonic() + 0.05
+
+    def open_url(request, **kwargs):
+        if request.full_url.endswith("/indexes/docs"):
+            return Response(
+                json.dumps(
+                    {
+                        "name": "docs",
+                        "dimension": 2,
+                        "metric": "cosine",
+                        "host": "docs-abc.pinecone.io",
+                        "status": {"ready": True},
+                    }
+                ).encode()
+            )
+        return Response(b'{"upsertedCount":1}', slow=True)
+
+    monkeypatch.setattr(transport.Transport, "__init__", short_deadline)
+    monkeypatch.setattr(transport, "resolve_pinned_ips", lambda *a, **k: ["8.8.8.8"])
+    monkeypatch.setattr(transport, "open_pinned_url", open_url)
+    start = time.monotonic()
+    result = main.handle(envelope("upsert_vectors", vectors=[{"id": "v", "values": [1, 0]}]))
+    assert time.monotonic() - start < 0.5
+    assert result["error_code"] == "timeout"
+    assert result["external_effect_status"] == "timeout_unknown"
+    assert not result["retryable"]

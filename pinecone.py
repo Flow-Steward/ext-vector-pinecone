@@ -68,6 +68,20 @@ def metadata(v):
     return v
 
 
+def document_metadata(chunk, document_id, generation, index):
+    result = metadata(chunk.get("metadata", {})).copy()
+    require(not any(k.startswith("_fs_") for k in result), "Reserved metadata key.")
+    result.update(
+        {
+            "document_id": document_id,
+            "text": text(chunk.get("text"), "chunk text", 32000, nonempty=True),
+            "_fs_generation": generation,
+            "chunk_index": index,
+        }
+    )
+    return metadata(result)
+
+
 def filters(v, depth=0):
     require(
         isinstance(v, dict) and bool(v) and depth <= 8 and len(v) <= 32, "Invalid metadata filter."
@@ -247,15 +261,14 @@ class Client:
             require(
                 isinstance(chunks, list) and 1 <= len(chunks) <= 100, "Require 1 to 100 chunks."
             )
-            for chunk in chunks:
+            for index, chunk in enumerate(chunks):
                 require(
                     isinstance(chunk, dict) and set(chunk) <= {"text", "values", "metadata"},
                     "Invalid chunk.",
                 )
                 text(chunk.get("text"), "chunk text", 32000, nonempty=True)
                 vector(chunk.get("values"), self.dimension)
-                m = metadata(chunk.get("metadata", {}))
-                require(not any(k.startswith("_fs_") for k in m), "Reserved metadata key.")
+                document_metadata(chunk, a["document_id"], "0" * 64, index)
 
     def execute(self, name, a):
         require(name in WRITES | READS, "Unknown Pinecone action.", code="unknown_action")
@@ -408,23 +421,14 @@ class Client:
                 ).hexdigest()
                 for i, c in enumerate(chunks):
                     require(isinstance(c, dict), "Invalid chunk.")
-                    m = metadata(c.get("metadata", {})).copy()
-                    require(not any(k.startswith("_fs_") for k in m), "Reserved metadata.")
-                    m.update(
-                        {
-                            "document_id": doc,
-                            "text": text(c.get("text"), "chunk text", 32000, nonempty=True),
-                            "_fs_generation": generation,
-                            "chunk_index": i,
-                        }
-                    )
+                    m = document_metadata(c, doc, generation, i)
                     records.append(
                         {
                             "id": hashlib.sha256(
                                 (doc + ":" + generation + ":" + str(i)).encode()
                             ).hexdigest(),
                             "values": vector(c.get("values"), self.dimension),
-                            "metadata": metadata(m),
+                            "metadata": m,
                         }
                     )
             else:
