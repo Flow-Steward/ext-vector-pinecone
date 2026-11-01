@@ -1,0 +1,152 @@
+{
+  "manifest_version": 2,
+  "extension_id": "flowsteward.pinecone",
+  "kind": "tool_provider",
+  "version": "1.0.0",
+  "release_stage": "active",
+  "display_name": "Pinecone Vector Database",
+  "description": "Dense vector CRUD, scoped namespaces and document retrieval.",
+  "lifecycle": {
+    "data_schema_version": 1,
+    "data_migrations": []
+  },
+  "vendor": {
+    "name": "Flow Steward"
+  },
+  "listing": {
+    "category": "data",
+    "tags": [
+      "pinecone",
+      "vector",
+      "rag"
+    ],
+    "summary": "Manage dense vectors and retrieve document evidence."
+  },
+  "features": [
+    "tool",
+    "action"
+  ],
+  "required_scopes": [
+    "extension:invoke"
+  ],
+  "egress": {
+    "connection_fields": [
+      "pinecone.index_host"
+    ],
+    "hosts": [
+      "api.pinecone.io",
+      "*.pinecone.io"
+    ]
+  },
+  "account_scope": {
+    "scope_type": "project",
+    "description": "Account, project and connection derived namespace isolation."
+  },
+  "entrypoint": {
+    "mode": "subprocess",
+    "command": [
+      "python3",
+      "main.py"
+    ],
+    "timeout_seconds": 60
+  },
+  "health": {
+    "command": [
+      "python3",
+      "health.py"
+    ],
+    "timeout_seconds": 5
+  },
+  "ui_manifest": "ui/ui_manifest.yaml",
+  "action_manifest": "ui/actions/actions.yaml",
+  "python_requirements": [],
+  "runtime": {
+    "contract_version": "extension_host_v2",
+    "compatibility": {
+      "platform_min": "1.4.0"
+    },
+    "extension_contract_v2": {
+      "connection_types": "contracts/connection_types.yaml",
+      "operation_manifest": "contracts/operation_manifest.yaml",
+      "step_ui_manifest": "contracts/step_ui_manifest.yaml"
+    }
+  },
+  "external_effects": [
+    {
+      "operation_id": "create_index",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "create_namespace",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "delete_document",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "delete_index",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "delete_namespace",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "delete_vectors",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "replace_document",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "update_vector",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "upsert_vectors",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    },
+    {
+      "operation_id": "configure_index_protection",
+      "effect_kind": "database_write",
+      "channel": "pinecone",
+      "idempotency": "required",
+      "test_mode_behavior": "suppress"
+    }
+  ],
+  "machine_auth": {
+    "service_account_key": "svc_ext_pinecone",
+    "required_scopes": [
+      "extension:invoke"
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "page_id": "connection",
+  "title": "Connections",
+  "description": "Choose a fixed dense index and API key.",
+  "components": [
+    {
+      "ref": "../components/connection_form.yaml"
+    }
+  ]
+}

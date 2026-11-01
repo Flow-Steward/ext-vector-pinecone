@@ -1,0 +1,1389 @@
+{
+  "operations": [
+    {
+      "operation_id": "create_index",
+      "display_name": "Create Index",
+      "description": "Create index.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "cloud",
+          "display_name": "Cloud",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "region",
+          "display_name": "Region",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "describe_index",
+      "display_name": "Describe Index",
+      "description": "Describe index.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "list_indexes",
+      "display_name": "List Indexes",
+      "description": "List indexes.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "verify_schema",
+      "display_name": "Verify Schema",
+      "description": "Verify schema.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "delete_index",
+      "display_name": "Delete Index",
+      "description": "Delete index.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "confirm_index",
+          "display_name": "Confirm Index",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "create_namespace",
+      "display_name": "Create Namespace",
+      "description": "Create namespace.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "describe_namespace",
+      "display_name": "Describe Namespace",
+      "description": "Describe namespace.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "list_namespaces",
+      "display_name": "List Namespaces",
+      "description": "List namespaces.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "pagination_token",
+          "display_name": "Pagination Token",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "limit",
+          "display_name": "Limit",
+          "value_type": "integer",
+          "required": false,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "delete_namespace",
+      "display_name": "Delete Namespace",
+      "description": "Delete namespace.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "confirm",
+          "display_name": "Confirm",
+          "value_type": "boolean",
+          "required": true,
+          "schema": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "index_stats",
+      "display_name": "Index Stats",
+      "description": "Index stats.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "upsert_vectors",
+      "display_name": "Upsert Vectors",
+      "description": "Upsert vectors.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "vectors",
+          "display_name": "Vectors",
+          "value_type": "array",
+          "required": true,
+          "schema": {
+            "type": "array"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "fetch_vectors",
+      "display_name": "Fetch Vectors",
+      "description": "Fetch vectors.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "ids",
+          "display_name": "Ids",
+          "value_type": "array",
+          "required": true,
+          "schema": {
+            "type": "array"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "list_vectors",
+      "display_name": "List Vectors",
+      "description": "List vectors.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "prefix",
+          "display_name": "Prefix",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "pagination_token",
+          "display_name": "Pagination Token",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "limit",
+          "display_name": "Limit",
+          "value_type": "integer",
+          "required": false,
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "update_vector",
+      "display_name": "Update Vector",
+      "description": "Update vector.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "id",
+          "display_name": "Id",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "values",
+          "display_name": "Values",
+          "value_type": "array",
+          "required": false,
+          "schema": {
+            "type": "array"
+          }
+        },
+        {
+          "name": "metadata",
+          "display_name": "Metadata",
+          "value_type": "json",
+          "required": false,
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "delete_vectors",
+      "display_name": "Delete Vectors",
+      "description": "Delete vectors.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "ids",
+          "display_name": "Ids",
+          "value_type": "array",
+          "required": true,
+          "schema": {
+            "type": "array"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "query_vectors",
+      "display_name": "Query Vectors",
+      "description": "Query vectors.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "vector",
+          "display_name": "Vector",
+          "value_type": "array",
+          "required": true,
+          "schema": {
+            "type": "array"
+          }
+        },
+        {
+          "name": "top_k",
+          "display_name": "Top K",
+          "value_type": "integer",
+          "required": false,
+          "schema": {
+            "type": "integer"
+          }
+        },
+        {
+          "name": "filter",
+          "display_name": "Filter",
+          "value_type": "json",
+          "required": false,
+          "schema": {
+            "type": "object"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "replace_document",
+      "display_name": "Replace Document",
+      "description": "Replace document.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "document_id",
+          "display_name": "Document Id",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "chunks",
+          "display_name": "Chunks",
+          "value_type": "array",
+          "required": true,
+          "schema": {
+            "type": "array"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "delete_document",
+      "display_name": "Delete Document",
+      "description": "Delete document.",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "document_id",
+          "display_name": "Document Id",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    },
+    {
+      "operation_id": "configure_index_protection",
+      "display_name": "Configure index deletion protection",
+      "description": "Configure index deletion protection",
+      "operation_kind": "action",
+      "workflow_visible": true,
+      "connection_type_ids": [
+        "pinecone"
+      ],
+      "category": "data",
+      "inputs": [
+        {
+          "name": "connection_ref",
+          "display_name": "Connection Ref",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "namespace",
+          "display_name": "Namespace",
+          "value_type": "text",
+          "required": false,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "confirm_index",
+          "display_name": "Confirm Index",
+          "value_type": "text",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "enabled",
+          "display_name": "Enabled",
+          "value_type": "boolean",
+          "required": true,
+          "schema": {
+            "type": "boolean"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "data",
+          "value_type": "json"
+        },
+        {
+          "name": "sources",
+          "value_type": "array"
+        }
+      ],
+      "result_fields": [
+        "result.data",
+        "result.sources"
+      ],
+      "error_codes": [
+        "invalid_payload",
+        "invalid_connection",
+        "unknown_action",
+        "effect_claim_required",
+        "test_mode_suppressed",
+        "provider_unavailable",
+        "invalid_provider_response",
+        "response_too_large",
+        "network_blocked",
+        "timeout",
+        "authentication_failed",
+        "not_found",
+        "conflict",
+        "rate_limited",
+        "schema_mismatch"
+      ]
+    }
+  ]
+}

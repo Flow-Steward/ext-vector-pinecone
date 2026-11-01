@@ -1,0 +1,69 @@
+{
+  "component_id": "pinecone_connection",
+  "type": "connection_form",
+  "title": "Pinecone connection",
+  "description": "Use a dedicated dense index per project connection when index administration also needs isolation. The extension restricts data access to derived namespaces.",
+  "data": {
+    "connection_kind": "extension",
+    "connection_type": "pinecone",
+    "config_fields": [
+      "index",
+      "dimension",
+      "metric",
+      "index_host",
+      "request_timeout_seconds"
+    ],
+    "secret_fields": [
+      "api_key"
+    ]
+  },
+  "defaults": {
+    "display_name": "Pinecone",
+    "metric": "cosine",
+    "request_timeout_seconds": 15
+  },
+  "fields": [
+    {
+      "path": "display_name",
+      "label": "Connection name",
+      "widget": "text",
+      "required": false
+    },
+    {
+      "path": "index",
+      "label": "Index name",
+      "widget": "text",
+      "required": true
+    },
+    {
+      "path": "dimension",
+      "label": "Dense dimension",
+      "widget": "integer",
+      "required": true
+    },
+    {
+      "path": "metric",
+      "label": "Metric",
+      "widget": "text",
+      "required": false
+    },
+    {
+      "path": "index_host",
+      "label": "Index hostname (optional)",
+      "widget": "text",
+      "required": false
+    },
+    {
+      "path": "request_timeout_seconds",
+      "label": "Timeout seconds",
+      "widget": "integer",
+      "required": false
+    },
+    {
+      "path": "api_key",
+      "label": "API key",
+      "widget": "secret",
+      "required": true
+    }
+  ]
+}

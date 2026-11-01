@@ -1,0 +1,6 @@
+{
+  "component_id": "pinecone_about",
+  "type": "markdown",
+  "title": "Pinecone Vector Database",
+  "content": "Manage dense indexes, isolated namespaces, vectors and document chunks. Supply matching embeddings. Query returns text, source IDs and scores for grounded retrieval. All writes require effect claims and are suppressed in test mode. Document replacement is not atomic; serialize updates for a document and reconcile uncertain writes. See README for limits and setup. No triggers."
+}

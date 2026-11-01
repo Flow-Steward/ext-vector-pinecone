@@ -1,0 +1,10 @@
+{
+  "page_id": "about",
+  "title": "About",
+  "description": "Dense vectors and scoped document retrieval.",
+  "components": [
+    {
+      "ref": "../components/about.yaml"
+    }
+  ]
+}

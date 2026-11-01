@@ -1,0 +1,370 @@
+{
+  "forms": [
+    {
+      "operation_id": "create_index",
+      "title": "Create Index",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "cloud",
+          "widget_type": "textarea",
+          "label": "cloud",
+          "required": false
+        },
+        {
+          "name": "region",
+          "widget_type": "textarea",
+          "label": "region",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "describe_index",
+      "title": "Describe Index",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "list_indexes",
+      "title": "List Indexes",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "verify_schema",
+      "title": "Verify Schema",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "delete_index",
+      "title": "Delete Index",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "confirm_index",
+          "widget_type": "textarea",
+          "label": "confirm_index",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "create_namespace",
+      "title": "Create Namespace",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "describe_namespace",
+      "title": "Describe Namespace",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "list_namespaces",
+      "title": "List Namespaces",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "pagination_token",
+          "widget_type": "textarea",
+          "label": "pagination_token",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "widget_type": "number",
+          "label": "limit",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "delete_namespace",
+      "title": "Delete Namespace",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "confirm",
+          "widget_type": "boolean",
+          "label": "confirm",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "index_stats",
+      "title": "Index Stats",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "upsert_vectors",
+      "title": "Upsert Vectors",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "vectors",
+          "widget_type": "json",
+          "label": "vectors",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "fetch_vectors",
+      "title": "Fetch Vectors",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "ids",
+          "widget_type": "json",
+          "label": "ids",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "list_vectors",
+      "title": "List Vectors",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "prefix",
+          "widget_type": "textarea",
+          "label": "prefix",
+          "required": false
+        },
+        {
+          "name": "pagination_token",
+          "widget_type": "textarea",
+          "label": "pagination_token",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "widget_type": "number",
+          "label": "limit",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "update_vector",
+      "title": "Update Vector",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "id",
+          "widget_type": "textarea",
+          "label": "id",
+          "required": true
+        },
+        {
+          "name": "values",
+          "widget_type": "json",
+          "label": "values",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "widget_type": "json",
+          "label": "metadata",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "delete_vectors",
+      "title": "Delete Vectors",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "ids",
+          "widget_type": "json",
+          "label": "ids",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "query_vectors",
+      "title": "Query Vectors",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "vector",
+          "widget_type": "json",
+          "label": "vector",
+          "required": true
+        },
+        {
+          "name": "top_k",
+          "widget_type": "number",
+          "label": "top_k",
+          "required": false
+        },
+        {
+          "name": "filter",
+          "widget_type": "json",
+          "label": "filter",
+          "required": false
+        }
+      ]
+    },
+    {
+      "operation_id": "replace_document",
+      "title": "Replace Document",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "document_id",
+          "widget_type": "textarea",
+          "label": "document_id",
+          "required": true
+        },
+        {
+          "name": "chunks",
+          "widget_type": "json",
+          "label": "chunks",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "delete_document",
+      "title": "Delete Document",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "document_id",
+          "widget_type": "textarea",
+          "label": "document_id",
+          "required": true
+        }
+      ]
+    },
+    {
+      "operation_id": "configure_index_protection",
+      "title": "Configure index deletion protection",
+      "fields": [
+        {
+          "name": "namespace",
+          "widget_type": "textarea",
+          "label": "namespace",
+          "required": false
+        },
+        {
+          "name": "confirm_index",
+          "widget_type": "textarea",
+          "label": "confirm_index",
+          "required": true
+        },
+        {
+          "name": "enabled",
+          "widget_type": "boolean",
+          "label": "Enabled",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
