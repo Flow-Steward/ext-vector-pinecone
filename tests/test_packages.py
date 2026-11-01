@@ -1,8 +1,9 @@
 """Pure Python target archives preserve runtime metadata and exclude local data."""
 
 import json
-from pathlib import Path
 import zipfile
+from pathlib import Path
+
 import pytest
 from scripts.package_extension import package_extension
 
@@ -22,3 +23,12 @@ def test_target_archive(tmp_path, target):
         assert not any(
             "/.git/" in n or "/dist/" in n or "/.fs-python/" in n or "/bin/" in n for n in names
         )
+
+
+def test_canonical_apache_license_bytes():
+    import hashlib
+
+    license_file = Path(__file__).resolve().parents[1] / "LICENSE"
+    assert hashlib.sha256(license_file.read_bytes()).hexdigest() == (
+        "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd"
+    )
