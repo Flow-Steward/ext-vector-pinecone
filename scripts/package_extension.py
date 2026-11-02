@@ -23,6 +23,7 @@ MACHINES = {"linux-amd64": 62, "linux-arm64": 183}
 PAYLOAD_DIRECTORIES = frozenset({"contracts", "ui", "scripts", "tests"})
 PAYLOAD_FILES = frozenset(
     {
+        "BRAND-ASSETS.md",
         "LICENSE",
         "NOTICE",
         "README.md",
@@ -111,6 +112,7 @@ def package_extension(root: Path, target: str, out_dir: Path) -> Path:
         raise ValueError("Output directory must not overlap release payload directories")
     paths = [path for path in _payload_paths(root, target) if out_dir not in path.parents]
     for required in (
+        "BRAND-ASSETS.md",
         "LICENSE",
         "NOTICE",
         "extension.yaml",

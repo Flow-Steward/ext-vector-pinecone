@@ -1,6 +1,6 @@
 # Pinecone Vector Database for Flow Steward
 
-Standalone host-v2 extension `flowsteward.pinecone` v1.0.0. Pure Python on Linux AMD64 and ARM64; the host provides `flowsteward-extension-sdk==0.4.0`. No Pinecone SDK, Go binary, additional runtime dependencies, trigger or background process.
+Standalone host-v2 extension `flowsteward.pinecone` v1.0.1. Pure Python on Linux AMD64 and ARM64; the host provides `flowsteward-extension-sdk==0.4.0`. No Pinecone SDK, Go binary, additional runtime dependencies, trigger or background process.
 
 ## Connection
 

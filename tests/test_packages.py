@@ -20,6 +20,11 @@ def test_target_archive(tmp_path, target):
         assert meta == {"runtime_target": target}
         assert "flowsteward_pinecone/main.py" in names
         assert "flowsteward_pinecone/icon.png" in names
+        assert "flowsteward_pinecone/BRAND-ASSETS.md" in names
+        assert (
+            z.read("flowsteward_pinecone/BRAND-ASSETS.md")
+            == (root / "BRAND-ASSETS.md").read_bytes()
+        )
         assert not any(
             "/.git/" in n or "/dist/" in n or "/.fs-python/" in n or "/bin/" in n for n in names
         )
