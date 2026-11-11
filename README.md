@@ -1,6 +1,14 @@
 # Pinecone Vector Database for Flow Steward
 
-Standalone host-v2 extension `flowsteward.pinecone` v1.0.2. Pure Python on Linux AMD64 and ARM64; the host provides `flowsteward-extension-sdk==0.4.0`. No Pinecone SDK, Go binary, additional runtime dependencies, trigger or background process.
+Flow Steward extension `flowsteward.pinecone`, version **1.0.3**.
+
+Use Pinecone as a dense vector store for Flow Steward search and document retrieval workflows. Insert or update vectors with metadata, fetch or delete records by ID, list vectors by prefix, and query an embedding with metadata filters. Retrieval returns scores and source information such as record IDs, document IDs and stored text, so a later workflow step can assemble context for an answer or select related records.
+
+The extension also manages index and namespace lifecycle: create a serverless index, list or inspect indexes, verify dimensions and metric, change deletion protection, and create, inspect, list or delete namespaces. Document replacement accepts prepared text chunks and their vectors, writes a new generation, and removes older generations; document deletion removes the selected document’s chunks.
+
+Data operations use namespaces tied to the account, project and connection. Index administration operates at the wider Pinecone project level, so use a dedicated index when that separation matters. Supply embeddings and answer generation through other steps. Vector batches accept up to 100 records and searches return up to 50 matches, with pagination controls for larger record listings.
+
+Create a project Pinecone connection with index name, vector dimension, metric and secret API key; an optional index host can pin the expected endpoint. Use a ready dense index, or create a serverless index with cloud and region, and provide embeddings from a separate provider.
 
 ## Connection
 
