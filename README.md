@@ -1,6 +1,6 @@
 # Pinecone Vector Database for Flow Steward
 
-Flow Steward extension `flowsteward.pinecone`, version **1.0.3**.
+Flow Steward extension `flowsteward.pinecone`, version **1.0.4**.
 
 Use Pinecone as a dense vector store for Flow Steward search and document retrieval workflows. Insert or update vectors with metadata, fetch or delete records by ID, list vectors by prefix, and query an embedding with metadata filters. Retrieval returns scores and source information such as record IDs, document IDs and stored text, so a later workflow step can assemble context for an answer or select related records.
 
@@ -46,4 +46,32 @@ Pinned REST API `2026-04`, intentionally the traditional dense-vector API. The n
 
 Verification uses isolated Docker extension-static and extension-tests gates: manifest validation, compileall, Ruff, mypy, Bandit and independent mocked HTTP/SDK-boundary tests for lifecycle, schema, isolation, CRUD, limits, errors, deadlines, write phases and packages. Cloud credentials were unavailable; no live Pinecone verification is claimed. The mocked fixture is test-only and does not emulate all server behavior.
 
-Build releases with `python scripts/package_extension.py --runtime-target linux-amd64` and `--runtime-target linux-arm64`. Both ZIPs include `.fs-package.yaml` with `runtime_target`; `native_executable` is omitted because there is no native payload. The deterministic builder excludes caches, local environments, Git and release output. Linux target labels describe supported host runtimes, not separate Python implementations.
+For local package verification, use `python scripts/package_extension.py --runtime-target linux-amd64` and `--runtime-target linux-arm64`. Both ZIPs include `.fs-package.yaml` with `runtime_target`; `native_executable` is omitted because there is no native payload. The deterministic builder excludes caches, local environments, Git and release output. Linux target labels describe supported host runtimes, not separate Python implementations.
+
+## Automated releases
+
+CI runs on pull requests and pushes to `main`. Official releases run through the
+pinned shared GitHub Actions workflow using `.github/release-config.json` to test,
+package both Linux runtime targets, and publish the release assets automatically.
+Manual ZIP uploads are not part of the release process.
+
+After merging the version **1.0.4** update into `main`, create and push its tag:
+
+```sh
+git switch main
+git pull --ff-only
+git tag -a v1.0.4 -m "Release v1.0.4"
+git push origin v1.0.4
+```
+
+To rerun the workflow for an existing tag without moving it:
+
+```sh
+gh workflow run release.yml --ref main -f tag=v1.0.4
+```
+
+The manifest remains the source for release identity and catalog descriptions.
+The shared workflow installs the verified first-party SDK wheel before test
+dependencies. Where native payloads are absent from source, the recipe restores
+only the listed missing files from checksum-pinned published archives; the source
+packager still verifies their provenance before packaging.

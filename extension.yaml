@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "extension_id": "flowsteward.pinecone",
   "kind": "tool_provider",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "release_stage": "active",
   "display_name": "Pinecone Vector Database",
   "description": "Use Pinecone as a dense vector store for Flow Steward search and document retrieval workflows. Insert or update vectors with metadata, fetch or delete records by ID, list vectors by prefix, and query an embedding with metadata filters. Retrieval returns scores and source information such as record IDs, document IDs and stored text, so a later workflow step can assemble context for an answer or select related records.\n\nThe extension also manages index and namespace lifecycle: create a serverless index, list or inspect indexes, verify dimensions and metric, change deletion protection, and create, inspect, list or delete namespaces. Document replacement accepts prepared text chunks and their vectors, writes a new generation, and removes older generations; document deletion removes the selected document’s chunks.\n\nData operations use namespaces tied to the account, project and connection. Index administration operates at the wider Pinecone project level, so use a dedicated index when that separation matters. Supply embeddings and answer generation through other steps. Vector batches accept up to 100 records and searches return up to 50 matches, with pagination controls for larger record listings.",
