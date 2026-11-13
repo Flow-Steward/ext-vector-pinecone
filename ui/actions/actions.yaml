@@ -3,8 +3,8 @@
     {
       "action_id": "create_index",
       "workflow_visible": true,
-      "title": "Create Index",
-      "description": "Create index.",
+      "title": "Create a serverless vector index",
+      "description": "Create the configured dense index with connection dimensions and metric, using the supplied cloud and region. Deletion protection starts enabled; provisioning is asynchronous, so inspect the index until ready.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -59,8 +59,8 @@
     {
       "action_id": "describe_index",
       "workflow_visible": true,
-      "title": "Describe Index",
-      "description": "Describe index.",
+      "title": "Inspect the configured vector index",
+      "description": "Read status, dimensions, metric and host for the connection index. Use after index creation to check readiness before saving or searching vectors.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -105,8 +105,8 @@
     {
       "action_id": "list_indexes",
       "workflow_visible": true,
-      "title": "List Indexes",
-      "description": "List indexes.",
+      "title": "List indexes in the Pinecone project",
+      "description": "List indexes visible to the API key across the Pinecone project. This is project-level administration, not limited to the selected data namespace.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -151,8 +151,8 @@
     {
       "action_id": "verify_schema",
       "workflow_visible": true,
-      "title": "Verify Schema",
-      "description": "Verify schema.",
+      "title": "Check index dimensions and metric",
+      "description": "Verify that the configured index is ready, dense and matches the connection dimensions and metric before ingestion or retrieval.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -197,8 +197,8 @@
     {
       "action_id": "delete_index",
       "workflow_visible": true,
-      "title": "Delete Index",
-      "description": "Delete index.",
+      "title": "Delete an index and all its namespaces",
+      "description": "Delete the entire configured index after matching its name in confirmation. This affects every namespace; explicitly disable deletion protection first using Set index deletion protection.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -248,8 +248,8 @@
     {
       "action_id": "create_namespace",
       "workflow_visible": true,
-      "title": "Create Namespace",
-      "description": "Create namespace.",
+      "title": "Create an isolated namespace",
+      "description": "Create a logical namespace inside the configured serverless index, scoped to this account, project and connection. Uses Pinecone default metadata indexing.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -294,8 +294,8 @@
     {
       "action_id": "describe_namespace",
       "workflow_visible": true,
-      "title": "Describe Namespace",
-      "description": "Describe namespace.",
+      "title": "Inspect an isolated namespace",
+      "description": "Read metadata for the selected logical namespace in the configured index, within this connection scope.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -340,8 +340,8 @@
     {
       "action_id": "list_namespaces",
       "workflow_visible": true,
-      "title": "List Namespaces",
-      "description": "List namespaces.",
+      "title": "List isolated namespaces",
+      "description": "List namespaces belonging to this account, project and connection. Use the returned pagination token for further pages; a filtered page may be empty but still have a next token.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -396,8 +396,8 @@
     {
       "action_id": "delete_namespace",
       "workflow_visible": true,
-      "title": "Delete Namespace",
-      "description": "Delete namespace.",
+      "title": "Delete a namespace and its vectors",
+      "description": "Delete the selected isolated namespace and all vectors it contains. Requires explicit confirmation; does not delete the index or other namespaces.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -447,8 +447,8 @@
     {
       "action_id": "index_stats",
       "workflow_visible": true,
-      "title": "Index Stats",
-      "description": "Index stats.",
+      "title": "Count vectors in a namespace",
+      "description": "Read vector statistics for the selected logical namespace only. Use to inspect ingestion progress; Pinecone is eventually consistent.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -493,8 +493,8 @@
     {
       "action_id": "upsert_vectors",
       "workflow_visible": true,
-      "title": "Upsert Vectors",
-      "description": "Upsert vectors.",
+      "title": "Save or replace vectors by ID",
+      "description": "Insert or replace 1–100 vectors with externally generated embeddings and optional metadata in the selected namespace. Reusing an ID replaces that record; dimensions must match the connection.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -544,8 +544,8 @@
     {
       "action_id": "fetch_vectors",
       "workflow_visible": true,
-      "title": "Fetch Vectors",
-      "description": "Fetch vectors.",
+      "title": "Read vectors by ID",
+      "description": "Fetch 1–100 record IDs from the selected namespace. Use saved IDs to retrieve stored vectors and metadata without a similarity search.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -595,8 +595,8 @@
     {
       "action_id": "list_vectors",
       "workflow_visible": true,
-      "title": "List Vectors",
-      "description": "List vectors.",
+      "title": "List vector IDs by prefix",
+      "description": "List vector IDs in the selected namespace, optionally restricted to an ID prefix. Returns explicit pagination for further pages; does not fetch full vector records.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -656,8 +656,8 @@
     {
       "action_id": "update_vector",
       "workflow_visible": true,
-      "title": "Update Vector",
-      "description": "Update vector.",
+      "title": "Update an embedding or merge metadata",
+      "description": "Update one existing record by ID with new embedding values, metadata fields or both. Metadata uses Pinecone setMetadata and merges supplied fields; provide at least one change.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -717,8 +717,8 @@
     {
       "action_id": "delete_vectors",
       "workflow_visible": true,
-      "title": "Delete Vectors",
-      "description": "Delete vectors.",
+      "title": "Delete vectors by ID",
+      "description": "Delete 1–100 explicit record IDs from the selected namespace. Does not delete the namespace or provide an unscoped delete-all operation.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -768,8 +768,8 @@
     {
       "action_id": "query_vectors",
       "workflow_visible": true,
-      "title": "Query Vectors",
-      "description": "Query vectors.",
+      "title": "Search similar vectors",
+      "description": "Search the selected namespace with a numeric embedding and optional Pinecone metadata filter. Returns scores and source metadata; generate the query embedding separately using the ingestion model and dimensions.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -829,8 +829,8 @@
     {
       "action_id": "replace_document",
       "workflow_visible": true,
-      "title": "Replace Document",
-      "description": "Replace document.",
+      "title": "Replace a document and its embeddings",
+      "description": "Save 1–100 prepared text chunks with embeddings under one document ID, then remove older generations in the namespace. This spans several requests and is not atomic; serialize concurrent replacements of the same document.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -885,8 +885,8 @@
     {
       "action_id": "delete_document",
       "workflow_visible": true,
-      "title": "Delete Document",
-      "description": "Delete document.",
+      "title": "Delete all vectors for a document",
+      "description": "Remove the selected document’s chunks from the isolated namespace using its stable document ID. Other documents and the index remain available.",
       "required_scopes": [
         "extension:invoke"
       ],
@@ -936,8 +936,8 @@
     {
       "action_id": "configure_index_protection",
       "workflow_visible": true,
-      "title": "Configure index deletion protection",
-      "description": "Configure index deletion protection",
+      "title": "Set index deletion protection",
+      "description": "Enable or disable protection on the entire configured index after confirming its name. Does not change dimensions or metric; disabling protection permits a later explicit index deletion.",
       "required_scopes": [
         "extension:invoke"
       ],

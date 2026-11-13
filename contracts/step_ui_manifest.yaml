@@ -2,367 +2,447 @@
   "forms": [
     {
       "operation_id": "create_index",
-      "title": "Create Index",
+      "title": "Create a serverless vector index",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "cloud",
           "widget_type": "textarea",
-          "label": "cloud",
-          "required": false
+          "label": "Serverless cloud",
+          "required": false,
+          "help_text": "Cloud provider for a new index: aws (default), gcp or azure. Choose a region supported by that cloud and your Pinecone project.",
+          "placeholder": "aws"
         },
         {
           "name": "region",
           "widget_type": "textarea",
-          "label": "region",
-          "required": true
+          "label": "Serverless region",
+          "required": true,
+          "help_text": "Required cloud region for a new index. It must be supported by the selected cloud and Pinecone project.",
+          "placeholder": "us-east-1"
         }
       ]
     },
     {
       "operation_id": "describe_index",
-      "title": "Describe Index",
+      "title": "Inspect the configured vector index",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         }
       ]
     },
     {
       "operation_id": "list_indexes",
-      "title": "List Indexes",
+      "title": "List indexes in the Pinecone project",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         }
       ]
     },
     {
       "operation_id": "verify_schema",
-      "title": "Verify Schema",
+      "title": "Check index dimensions and metric",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         }
       ]
     },
     {
       "operation_id": "delete_index",
-      "title": "Delete Index",
+      "title": "Delete an index and all its namespaces",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "confirm_index",
           "widget_type": "textarea",
-          "label": "confirm_index",
-          "required": true
+          "label": "Confirm configured index name",
+          "required": true,
+          "help_text": "Enter the exact index name saved in the connection. This operation affects the entire index, including all namespaces.",
+          "placeholder": "knowledge-base"
         }
       ]
     },
     {
       "operation_id": "create_namespace",
-      "title": "Create Namespace",
+      "title": "Create an isolated namespace",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         }
       ]
     },
     {
       "operation_id": "describe_namespace",
-      "title": "Describe Namespace",
+      "title": "Inspect an isolated namespace",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         }
       ]
     },
     {
       "operation_id": "list_namespaces",
-      "title": "List Namespaces",
+      "title": "List isolated namespaces",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "pagination_token",
           "widget_type": "textarea",
-          "label": "pagination_token",
-          "required": false
+          "label": "Next-page token",
+          "required": false,
+          "help_text": "Optional opaque token returned by the previous matching list action. Leave blank for the first page and keep the same connection and listing filters."
         },
         {
           "name": "limit",
           "widget_type": "number",
-          "label": "limit",
-          "required": false
+          "label": "Maximum items per page",
+          "required": false,
+          "help_text": "Optional integer from 1 to 100; default 100. Repeat the list action with its returned pagination token to fetch another page.",
+          "placeholder": "100"
         }
       ]
     },
     {
       "operation_id": "delete_namespace",
-      "title": "Delete Namespace",
+      "title": "Delete a namespace and its vectors",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "confirm",
           "widget_type": "boolean",
-          "label": "confirm",
-          "required": true
+          "label": "Confirm namespace and vector deletion",
+          "required": true,
+          "help_text": "Must be true to delete this isolated namespace and every vector inside it. Verify the logical namespace before enabling."
         }
       ]
     },
     {
       "operation_id": "index_stats",
-      "title": "Index Stats",
+      "title": "Count vectors in a namespace",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         }
       ]
     },
     {
       "operation_id": "upsert_vectors",
-      "title": "Upsert Vectors",
+      "title": "Save or replace vectors by ID",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "vectors",
           "widget_type": "json",
-          "label": "vectors",
-          "required": true
+          "label": "Vectors to save (JSON array)",
+          "required": true,
+          "help_text": "Supply 1–100 objects with unique id, values and optional flat metadata. Values must be finite and match connection dimensions. Metadata may contain scalars or string lists; _fs_ keys are reserved. The 3-value example needs a 3-dimensional index.",
+          "placeholder": "[{\"id\":\"manual_42_part_1\",\"values\":[0.1,0.2,0.3],\"metadata\":{\"text\":\"Refunds within 30 days.\",\"language\":\"en\"}}]"
         }
       ]
     },
     {
       "operation_id": "fetch_vectors",
-      "title": "Fetch Vectors",
+      "title": "Read vectors by ID",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "ids",
           "widget_type": "json",
-          "label": "ids",
-          "required": true
+          "label": "Vector IDs (JSON array)",
+          "required": true,
+          "help_text": "Supply 1–100 explicit nonempty string IDs, each up to 512 UTF-8 bytes without whitespace or control characters. IDs belong to this logical namespace.",
+          "placeholder": "[\"manual_42_part_1\",\"manual_42_part_2\"]"
         }
       ]
     },
     {
       "operation_id": "list_vectors",
-      "title": "List Vectors",
+      "title": "List vector IDs by prefix",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "prefix",
           "widget_type": "textarea",
-          "label": "prefix",
-          "required": false
+          "label": "Vector ID prefix",
+          "required": false,
+          "help_text": "Optional prefix for record IDs. Leave blank to list all IDs in this namespace.",
+          "placeholder": "manual_42_"
         },
         {
           "name": "pagination_token",
           "widget_type": "textarea",
-          "label": "pagination_token",
-          "required": false
+          "label": "Next-page token",
+          "required": false,
+          "help_text": "Optional opaque token returned by the previous matching list action. Leave blank for the first page and keep the same connection and listing filters."
         },
         {
           "name": "limit",
           "widget_type": "number",
-          "label": "limit",
-          "required": false
+          "label": "Maximum items per page",
+          "required": false,
+          "help_text": "Optional integer from 1 to 100; default 100. Repeat the list action with its returned pagination token to fetch another page.",
+          "placeholder": "100"
         }
       ]
     },
     {
       "operation_id": "update_vector",
-      "title": "Update Vector",
+      "title": "Update an embedding or merge metadata",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "id",
           "widget_type": "textarea",
-          "label": "id",
-          "required": true
+          "label": "Vector ID",
+          "required": true,
+          "help_text": "Existing record ID to update in this namespace. Supply embedding values, metadata or both.",
+          "placeholder": "manual_42_part_1"
         },
         {
           "name": "values",
           "widget_type": "json",
-          "label": "values",
-          "required": false
+          "label": "Replacement embedding (JSON array)",
+          "required": false,
+          "help_text": "Finite numeric array from an embedding provider; use exactly the connection dimensions. Match the model used for stored records. The 3-value example is illustrative for a 3-dimensional index.",
+          "placeholder": "[0.1,0.2,0.3]"
         },
         {
           "name": "metadata",
           "widget_type": "json",
-          "label": "metadata",
-          "required": false
+          "label": "Metadata fields to merge (JSON)",
+          "required": false,
+          "help_text": "Optional flat object of scalars or string lists; maximum 40 KiB. Supplied fields merge into the existing record using setMetadata. Keys starting _fs_ are reserved.",
+          "placeholder": "{\"language\":\"en\",\"category\":\"refunds\"}"
         }
       ]
     },
     {
       "operation_id": "delete_vectors",
-      "title": "Delete Vectors",
+      "title": "Delete vectors by ID",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "ids",
           "widget_type": "json",
-          "label": "ids",
-          "required": true
+          "label": "Vector IDs (JSON array)",
+          "required": true,
+          "help_text": "Supply 1–100 explicit nonempty string IDs, each up to 512 UTF-8 bytes without whitespace or control characters. IDs belong to this logical namespace.",
+          "placeholder": "[\"manual_42_part_1\",\"manual_42_part_2\"]"
         }
       ]
     },
     {
       "operation_id": "query_vectors",
-      "title": "Query Vectors",
+      "title": "Search similar vectors",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "vector",
           "widget_type": "json",
-          "label": "vector",
-          "required": true
+          "label": "Search embedding (JSON array)",
+          "required": true,
+          "help_text": "Finite numeric array from an embedding provider; use exactly the connection dimensions. Match the model used for stored records. The 3-value example is illustrative for a 3-dimensional index.",
+          "placeholder": "[0.1,0.2,0.3]"
         },
         {
           "name": "top_k",
           "widget_type": "number",
-          "label": "top_k",
-          "required": false
+          "label": "Maximum matching vectors",
+          "required": false,
+          "help_text": "Optional integer from 1 to 50; default 10. Scores depend on the index metric and are not percentages.",
+          "placeholder": "5"
         },
         {
           "name": "filter",
           "widget_type": "json",
-          "label": "filter",
-          "required": false
+          "label": "Pinecone metadata filter (JSON)",
+          "required": false,
+          "help_text": "Optional Pinecone filter with supported comparison or logical operators. Filters restrict records within this namespace; omit to search all its vectors.",
+          "placeholder": "{\"language\":{\"$eq\":\"en\"}}"
         }
       ]
     },
     {
       "operation_id": "replace_document",
-      "title": "Replace Document",
+      "title": "Replace a document and its embeddings",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "document_id",
           "widget_type": "textarea",
-          "label": "document_id",
-          "required": true
+          "label": "Stable document ID",
+          "required": true,
+          "help_text": "Nonempty ID shared by all chunks of one document. Reuse it to replace or delete that document in this namespace.",
+          "placeholder": "manual_42"
         },
         {
           "name": "chunks",
           "widget_type": "json",
-          "label": "chunks",
-          "required": true
+          "label": "Document chunks and embeddings (JSON array)",
+          "required": true,
+          "help_text": "Supply 1–100 objects with text and values, plus optional flat metadata. Generate embeddings first. Replaces all earlier generations of this document after saving new chunks; partial writes can remain on failure. Example uses 3-dimensional vectors.",
+          "placeholder": "[{\"text\":\"Refunds within 30 days.\",\"values\":[0.1,0.2,0.3],\"metadata\":{\"language\":\"en\"}}]"
         }
       ]
     },
     {
       "operation_id": "delete_document",
-      "title": "Delete Document",
+      "title": "Delete all vectors for a document",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "document_id",
           "widget_type": "textarea",
-          "label": "document_id",
-          "required": true
+          "label": "Stable document ID",
+          "required": true,
+          "help_text": "Nonempty ID shared by all chunks of one document. Reuse it to replace or delete that document in this namespace.",
+          "placeholder": "manual_42"
         }
       ]
     },
     {
       "operation_id": "configure_index_protection",
-      "title": "Configure index deletion protection",
+      "title": "Set index deletion protection",
       "fields": [
         {
           "name": "namespace",
           "widget_type": "textarea",
-          "label": "namespace",
-          "required": false
+          "label": "Logical namespace",
+          "required": false,
+          "help_text": "Optional logical name; default default. Use 1–64 letters, digits, underscores or hyphens. The connector adds account/project/connection isolation. Index administration ignores this field.",
+          "placeholder": "knowledge_base"
         },
         {
           "name": "confirm_index",
           "widget_type": "textarea",
-          "label": "confirm_index",
-          "required": true
+          "label": "Confirm configured index name",
+          "required": true,
+          "help_text": "Enter the exact index name saved in the connection. This operation affects the entire index, including all namespaces.",
+          "placeholder": "knowledge-base"
         },
         {
           "name": "enabled",
           "widget_type": "boolean",
-          "label": "Enabled",
-          "required": true
+          "label": "Enable deletion protection",
+          "required": true,
+          "help_text": "Required boolean. true protects the entire index; false permits a later Delete an index action. The action does not itself delete any data."
         }
       ]
     }

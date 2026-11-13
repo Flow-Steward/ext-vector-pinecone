@@ -1,6 +1,6 @@
 # Pinecone Vector Database for Flow Steward
 
-Flow Steward extension `flowsteward.pinecone`, version **1.0.4**.
+Flow Steward extension `flowsteward.pinecone`, version **1.0.5**.
 
 Use Pinecone as a dense vector store for Flow Steward search and document retrieval workflows. Insert or update vectors with metadata, fetch or delete records by ID, list vectors by prefix, and query an embedding with metadata filters. Retrieval returns scores and source information such as record IDs, document IDs and stored text, so a later workflow step can assemble context for an answer or select related records.
 
@@ -55,7 +55,7 @@ pinned shared GitHub Actions workflow using `.github/release-config.json` to tes
 package both Linux runtime targets, and publish the release assets automatically.
 Manual ZIP uploads are not part of the release process.
 
-After merging the version **1.0.4** update into `main`, create and push its tag:
+After merging the version **1.0.5** update into `main`, create and push its tag:
 
 ```sh
 git switch main
@@ -75,3 +75,7 @@ The shared workflow installs the verified first-party SDK wheel before test
 dependencies. Where native payloads are absent from source, the recipe restores
 only the listed missing files from checksum-pinned published archives; the source
 packager still verifies their provenance before packaging.
+
+## Workflow action setup and examples
+
+See [Workflow actions](docs/workflow-actions.md) for connection setup, inputs and practical examples.

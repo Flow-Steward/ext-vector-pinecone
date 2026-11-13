@@ -2,8 +2,8 @@
   "operations": [
     {
       "operation_id": "create_index",
-      "display_name": "Create Index",
-      "description": "Create index.",
+      "display_name": "Create a serverless vector index",
+      "description": "Create the configured dense index with connection dimensions and metric, using the supplied cloud and region. Deletion protection starts enabled; provisioning is asynchronous, so inspect the index until ready.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -13,7 +13,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -22,7 +22,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -31,7 +31,7 @@
         },
         {
           "name": "cloud",
-          "display_name": "Cloud",
+          "display_name": "Serverless cloud",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -40,7 +40,7 @@
         },
         {
           "name": "region",
-          "display_name": "Region",
+          "display_name": "Serverless region",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -82,8 +82,8 @@
     },
     {
       "operation_id": "describe_index",
-      "display_name": "Describe Index",
-      "description": "Describe index.",
+      "display_name": "Inspect the configured vector index",
+      "description": "Read status, dimensions, metric and host for the connection index. Use after index creation to check readiness before saving or searching vectors.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -93,7 +93,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -102,7 +102,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -144,8 +144,8 @@
     },
     {
       "operation_id": "list_indexes",
-      "display_name": "List Indexes",
-      "description": "List indexes.",
+      "display_name": "List indexes in the Pinecone project",
+      "description": "List indexes visible to the API key across the Pinecone project. This is project-level administration, not limited to the selected data namespace.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -155,7 +155,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -164,7 +164,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -206,8 +206,8 @@
     },
     {
       "operation_id": "verify_schema",
-      "display_name": "Verify Schema",
-      "description": "Verify schema.",
+      "display_name": "Check index dimensions and metric",
+      "description": "Verify that the configured index is ready, dense and matches the connection dimensions and metric before ingestion or retrieval.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -217,7 +217,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -226,7 +226,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -268,8 +268,8 @@
     },
     {
       "operation_id": "delete_index",
-      "display_name": "Delete Index",
-      "description": "Delete index.",
+      "display_name": "Delete an index and all its namespaces",
+      "description": "Delete the entire configured index after matching its name in confirmation. This affects every namespace; explicitly disable deletion protection first using Set index deletion protection.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -279,7 +279,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -288,7 +288,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -297,7 +297,7 @@
         },
         {
           "name": "confirm_index",
-          "display_name": "Confirm Index",
+          "display_name": "Confirm configured index name",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -339,8 +339,8 @@
     },
     {
       "operation_id": "create_namespace",
-      "display_name": "Create Namespace",
-      "description": "Create namespace.",
+      "display_name": "Create an isolated namespace",
+      "description": "Create a logical namespace inside the configured serverless index, scoped to this account, project and connection. Uses Pinecone default metadata indexing.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -350,7 +350,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -359,7 +359,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -401,8 +401,8 @@
     },
     {
       "operation_id": "describe_namespace",
-      "display_name": "Describe Namespace",
-      "description": "Describe namespace.",
+      "display_name": "Inspect an isolated namespace",
+      "description": "Read metadata for the selected logical namespace in the configured index, within this connection scope.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -412,7 +412,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -421,7 +421,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -463,8 +463,8 @@
     },
     {
       "operation_id": "list_namespaces",
-      "display_name": "List Namespaces",
-      "description": "List namespaces.",
+      "display_name": "List isolated namespaces",
+      "description": "List namespaces belonging to this account, project and connection. Use the returned pagination token for further pages; a filtered page may be empty but still have a next token.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -474,7 +474,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -483,7 +483,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -492,7 +492,7 @@
         },
         {
           "name": "pagination_token",
-          "display_name": "Pagination Token",
+          "display_name": "Next-page token",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -501,7 +501,7 @@
         },
         {
           "name": "limit",
-          "display_name": "Limit",
+          "display_name": "Maximum items per page",
           "value_type": "integer",
           "required": false,
           "schema": {
@@ -543,8 +543,8 @@
     },
     {
       "operation_id": "delete_namespace",
-      "display_name": "Delete Namespace",
-      "description": "Delete namespace.",
+      "display_name": "Delete a namespace and its vectors",
+      "description": "Delete the selected isolated namespace and all vectors it contains. Requires explicit confirmation; does not delete the index or other namespaces.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -554,7 +554,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -563,7 +563,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -572,7 +572,7 @@
         },
         {
           "name": "confirm",
-          "display_name": "Confirm",
+          "display_name": "Confirm namespace and vector deletion",
           "value_type": "boolean",
           "required": true,
           "schema": {
@@ -614,8 +614,8 @@
     },
     {
       "operation_id": "index_stats",
-      "display_name": "Index Stats",
-      "description": "Index stats.",
+      "display_name": "Count vectors in a namespace",
+      "description": "Read vector statistics for the selected logical namespace only. Use to inspect ingestion progress; Pinecone is eventually consistent.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -625,7 +625,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -634,7 +634,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -676,8 +676,8 @@
     },
     {
       "operation_id": "upsert_vectors",
-      "display_name": "Upsert Vectors",
-      "description": "Upsert vectors.",
+      "display_name": "Save or replace vectors by ID",
+      "description": "Insert or replace 1–100 vectors with externally generated embeddings and optional metadata in the selected namespace. Reusing an ID replaces that record; dimensions must match the connection.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -687,7 +687,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -696,7 +696,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -705,7 +705,7 @@
         },
         {
           "name": "vectors",
-          "display_name": "Vectors",
+          "display_name": "Vectors to save (JSON array)",
           "value_type": "array",
           "required": true,
           "schema": {
@@ -747,8 +747,8 @@
     },
     {
       "operation_id": "fetch_vectors",
-      "display_name": "Fetch Vectors",
-      "description": "Fetch vectors.",
+      "display_name": "Read vectors by ID",
+      "description": "Fetch 1–100 record IDs from the selected namespace. Use saved IDs to retrieve stored vectors and metadata without a similarity search.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -758,7 +758,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -767,7 +767,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -776,7 +776,7 @@
         },
         {
           "name": "ids",
-          "display_name": "Ids",
+          "display_name": "Vector IDs (JSON array)",
           "value_type": "array",
           "required": true,
           "schema": {
@@ -818,8 +818,8 @@
     },
     {
       "operation_id": "list_vectors",
-      "display_name": "List Vectors",
-      "description": "List vectors.",
+      "display_name": "List vector IDs by prefix",
+      "description": "List vector IDs in the selected namespace, optionally restricted to an ID prefix. Returns explicit pagination for further pages; does not fetch full vector records.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -829,7 +829,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -838,7 +838,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -847,7 +847,7 @@
         },
         {
           "name": "prefix",
-          "display_name": "Prefix",
+          "display_name": "Vector ID prefix",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -856,7 +856,7 @@
         },
         {
           "name": "pagination_token",
-          "display_name": "Pagination Token",
+          "display_name": "Next-page token",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -865,7 +865,7 @@
         },
         {
           "name": "limit",
-          "display_name": "Limit",
+          "display_name": "Maximum items per page",
           "value_type": "integer",
           "required": false,
           "schema": {
@@ -907,8 +907,8 @@
     },
     {
       "operation_id": "update_vector",
-      "display_name": "Update Vector",
-      "description": "Update vector.",
+      "display_name": "Update an embedding or merge metadata",
+      "description": "Update one existing record by ID with new embedding values, metadata fields or both. Metadata uses Pinecone setMetadata and merges supplied fields; provide at least one change.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -918,7 +918,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -927,7 +927,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -936,7 +936,7 @@
         },
         {
           "name": "id",
-          "display_name": "Id",
+          "display_name": "Vector ID",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -945,7 +945,7 @@
         },
         {
           "name": "values",
-          "display_name": "Values",
+          "display_name": "Replacement embedding (JSON array)",
           "value_type": "array",
           "required": false,
           "schema": {
@@ -954,7 +954,7 @@
         },
         {
           "name": "metadata",
-          "display_name": "Metadata",
+          "display_name": "Metadata fields to merge (JSON)",
           "value_type": "json",
           "required": false,
           "schema": {
@@ -996,8 +996,8 @@
     },
     {
       "operation_id": "delete_vectors",
-      "display_name": "Delete Vectors",
-      "description": "Delete vectors.",
+      "display_name": "Delete vectors by ID",
+      "description": "Delete 1–100 explicit record IDs from the selected namespace. Does not delete the namespace or provide an unscoped delete-all operation.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -1007,7 +1007,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1016,7 +1016,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -1025,7 +1025,7 @@
         },
         {
           "name": "ids",
-          "display_name": "Ids",
+          "display_name": "Vector IDs (JSON array)",
           "value_type": "array",
           "required": true,
           "schema": {
@@ -1067,8 +1067,8 @@
     },
     {
       "operation_id": "query_vectors",
-      "display_name": "Query Vectors",
-      "description": "Query vectors.",
+      "display_name": "Search similar vectors",
+      "description": "Search the selected namespace with a numeric embedding and optional Pinecone metadata filter. Returns scores and source metadata; generate the query embedding separately using the ingestion model and dimensions.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -1078,7 +1078,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1087,7 +1087,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -1096,7 +1096,7 @@
         },
         {
           "name": "vector",
-          "display_name": "Vector",
+          "display_name": "Search embedding (JSON array)",
           "value_type": "array",
           "required": true,
           "schema": {
@@ -1105,7 +1105,7 @@
         },
         {
           "name": "top_k",
-          "display_name": "Top K",
+          "display_name": "Maximum matching vectors",
           "value_type": "integer",
           "required": false,
           "schema": {
@@ -1114,7 +1114,7 @@
         },
         {
           "name": "filter",
-          "display_name": "Filter",
+          "display_name": "Pinecone metadata filter (JSON)",
           "value_type": "json",
           "required": false,
           "schema": {
@@ -1156,8 +1156,8 @@
     },
     {
       "operation_id": "replace_document",
-      "display_name": "Replace Document",
-      "description": "Replace document.",
+      "display_name": "Replace a document and its embeddings",
+      "description": "Save 1–100 prepared text chunks with embeddings under one document ID, then remove older generations in the namespace. This spans several requests and is not atomic; serialize concurrent replacements of the same document.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -1167,7 +1167,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1176,7 +1176,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -1185,7 +1185,7 @@
         },
         {
           "name": "document_id",
-          "display_name": "Document Id",
+          "display_name": "Stable document ID",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1194,7 +1194,7 @@
         },
         {
           "name": "chunks",
-          "display_name": "Chunks",
+          "display_name": "Document chunks and embeddings (JSON array)",
           "value_type": "array",
           "required": true,
           "schema": {
@@ -1236,8 +1236,8 @@
     },
     {
       "operation_id": "delete_document",
-      "display_name": "Delete Document",
-      "description": "Delete document.",
+      "display_name": "Delete all vectors for a document",
+      "description": "Remove the selected document’s chunks from the isolated namespace using its stable document ID. Other documents and the index remain available.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -1247,7 +1247,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1256,7 +1256,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -1265,7 +1265,7 @@
         },
         {
           "name": "document_id",
-          "display_name": "Document Id",
+          "display_name": "Stable document ID",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1307,8 +1307,8 @@
     },
     {
       "operation_id": "configure_index_protection",
-      "display_name": "Configure index deletion protection",
-      "description": "Configure index deletion protection",
+      "display_name": "Set index deletion protection",
+      "description": "Enable or disable protection on the entire configured index after confirming its name. Does not change dimensions or metric; disabling protection permits a later explicit index deletion.",
       "operation_kind": "action",
       "workflow_visible": true,
       "connection_type_ids": [
@@ -1318,7 +1318,7 @@
       "inputs": [
         {
           "name": "connection_ref",
-          "display_name": "Connection Ref",
+          "display_name": "Project connection",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1327,7 +1327,7 @@
         },
         {
           "name": "namespace",
-          "display_name": "Namespace",
+          "display_name": "Logical namespace",
           "value_type": "text",
           "required": false,
           "schema": {
@@ -1336,7 +1336,7 @@
         },
         {
           "name": "confirm_index",
-          "display_name": "Confirm Index",
+          "display_name": "Confirm configured index name",
           "value_type": "text",
           "required": true,
           "schema": {
@@ -1345,7 +1345,7 @@
         },
         {
           "name": "enabled",
-          "display_name": "Enabled",
+          "display_name": "Enable deletion protection",
           "value_type": "boolean",
           "required": true,
           "schema": {
