@@ -6,6 +6,9 @@
     },
     {
       "ref": "pages/connection.yaml"
+    },
+    {
+      "ref": "pages/support.yaml"
     }
   ]
 }
